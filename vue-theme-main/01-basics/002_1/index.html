@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vue Basics</title>
+		<link rel="stylesheet" href="theme.css" />
+	</head>
+	<body>
+		<div class="container" id="app">
+			<div class="card">
+				<h1>{{title}}</h1>
+				<div class="form-control">
+					<input
+						type="text"
+						:placeholder="stringPlaceholder"
+						:value="inputValue"
+						v-on:input="inputChangeHandler"
+						v-on:keypress.enter="addNotes"
+					/>
+				</div>
+				<div>
+					<button class="btn" @click="addNotes">Добавить</button>
+				</div>
+				<hr />
+				<ul class="list">
+					<li class="list-item" v-for="note in notes">
+						{{note}}
+						<button class="btn danger">X</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>
