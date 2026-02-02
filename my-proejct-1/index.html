@@ -9,13 +9,20 @@
 	<body>
 		<div class="container" id="app">
 			<div class="card">
-				<h1>{{title}}</h1>
+				<h1
+					:style="{
+					color: inputValue.length === 10 ? '#ff4f4f':'#47b584',
+					fontSize:'20px'
+				}"
+				>
+					{{title}}
+				</h1>
 				<div class="form-control">
 					<input
 						type="text"
 						:placeholder="stringPlaceholder"
 						:value="inputValue"
-						@input="inputChangeHandler"
+						v-model="inputValue"
 						@keypress.enter="addNotes"
 					/>
 				</div>
@@ -25,7 +32,19 @@
 				<hr />
 				<ul class="list" v-if="notes.length > 0">
 					<li class="list-item" v-for="(note, index) in notes">
-						{{note}}
+						<!-- <span :class="note.length > 5 ? 'primary':'bold'"
+							>{{index+1}}. {{note}}</span
+						> -->
+						<!-- <span
+							:class="{
+							'primary':true,
+							'bold': note.length > 5
+						}"
+							>{{index+1}}. {{note}}</span
+						> -->
+						<span :class="['bold', {'primary':note.length > 5}]"
+							>{{index+1}}. {{note}}</span
+						>
 						<button class="btn danger" @click="removeNote(index)">X</button>
 					</li>
 					<li>

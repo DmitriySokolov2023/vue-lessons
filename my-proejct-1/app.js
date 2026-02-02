@@ -5,14 +5,10 @@ const App = {
 			title: 'Список заметок',
 			stringPlaceholder: 'Введите название заметки',
 			inputValue: '',
-			notes: [],
+			notes: ['Заметка 1'],
 		}
 	},
 	methods: {
-		inputChangeHandler(e) {
-			this.inputValue = e.target.value
-		},
-
 		addNotes() {
 			if (this.inputValue.length === 0) {
 				return
@@ -34,7 +30,7 @@ const App = {
 	watch: {
 		inputValue(value) {
 			if (value.length > 10) {
-				this.inputValue = value
+				this.inputValue = ''
 			}
 		},
 	},
