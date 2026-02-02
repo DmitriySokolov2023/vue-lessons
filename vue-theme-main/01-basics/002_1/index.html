@@ -15,20 +15,27 @@
 						type="text"
 						:placeholder="stringPlaceholder"
 						:value="inputValue"
-						v-on:input="inputChangeHandler"
-						v-on:keypress.enter="addNotes"
+						@input="inputChangeHandler"
+						@keypress.enter="addNotes"
 					/>
 				</div>
 				<div>
 					<button class="btn" @click="addNotes">Добавить</button>
 				</div>
 				<hr />
-				<ul class="list">
-					<li class="list-item" v-for="note in notes">
+				<ul class="list" v-if="notes.length > 0">
+					<li class="list-item" v-for="(note, index) in notes">
 						{{note}}
-						<button class="btn danger">X</button>
+						<button class="btn danger" @click="removeNote(index)">X</button>
+					</li>
+					<li>
+						<strong
+							>Общее кол-во: {{notes.length}} || Удвоение
+							{{doubleCount}}</strong
+						>
 					</li>
 				</ul>
+				<div v-else>Нет заметок</div>
 			</div>
 		</div>
 
