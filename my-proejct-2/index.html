@@ -16,11 +16,16 @@
 			<div class="card center">
 				<h3 v-text="title"></h3>
 				<!-- <h3 v-once>{{title}}</h3> -->
+				<div class="form-control">
+					<input type="text" ref="score1" />
+					<input type="text" ref="score2" />
+					<button @click="addItem()">Отправить</button>
+				</div>
 
 				<ul class="list" v-if="items.length">
 					<li
 						class="list-item"
-						v-for="(item, i) in items"
+						v-for="(item, i) in evenItems"
 						@click="items.splice(i,1)"
 						:key="item"
 					>
